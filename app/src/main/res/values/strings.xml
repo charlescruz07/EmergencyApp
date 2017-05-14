@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Emergency App</string>
+    <string name="facebook_app_id">648922658651505</string>
+    <string name="fb_login_protocol_scheme">fb648922658651505</string>
+</resources>

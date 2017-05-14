@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "734605910586",
+    "firebase_url": "https://radar-560a6.firebaseio.com",
+    "project_id": "radar-560a6",
+    "storage_bucket": "radar-560a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:734605910586:android:0291b709003acd95",
+        "android_client_info": {
+          "package_name": "com.chua.emergencyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "734605910586-ab2nfldmi0b719b8oprlc101lmm1d7f9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDomvut8sif2JdHWvR4i2gCg2YSLHS0F3I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
