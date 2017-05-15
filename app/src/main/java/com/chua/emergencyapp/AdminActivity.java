@@ -1,11 +1,15 @@
 package com.chua.emergencyapp;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +28,10 @@ public class AdminActivity extends AppCompatActivity {
     private ImageView displayPic;
     private TextView displayName, userRole;
     private Button logoutBtn;
+    private FloatingActionButton addPost;
+    private FrameLayout postList;
+    private FragmentManager fragmentManager;
+    private FragmentTransaction fragmentTransaction;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private FirebaseDatabase firebaseDatabase;
@@ -43,6 +51,17 @@ public class AdminActivity extends AppCompatActivity {
         displayName = (TextView) findViewById(R.id.displayName);
         userRole = (TextView) findViewById(R.id.userRole);
         logoutBtn = (Button) findViewById(R.id.logoutBtn);
+        postList = (FrameLayout) findViewById(R.id.frame1);
+        addPost = (FloatingActionButton) findViewById(R.id.addPost);
+
+        addPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.setVisibility(View.GONE);
+                finish();
+                startActivity(new Intent(AdminActivity.this,CreatePostActivity.class));
+            }
+        });
 
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,15 +72,12 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
-//        Glide.with(this).load(mUser.getPhotoUrl()).into(displayPic);
-//        displayName.setText();
-
         mRef = firebaseDatabase.getReference().child("Users").child(mUser.getUid());
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Users user = dataSnapshot.getValue(Users.class);
-                Log.d("bernard", user.getName());
+//                Log.d("bernard", user.getName());
                 Glide.with(AdminActivity.this).load(user.getDisplayPicture()).into(displayPic);
                 displayName.setText(user.getName());
                 userRole.setText(user.getRole());
@@ -72,6 +88,11 @@ public class AdminActivity extends AppCompatActivity {
 
             }
         });
+
+
+        fragmentManager = getFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame1, new AdminActivitiesFragment()).commit();
 
     }
 }

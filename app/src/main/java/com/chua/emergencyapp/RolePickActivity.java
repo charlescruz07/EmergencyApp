@@ -51,19 +51,4 @@ public class RolePickActivity extends AppCompatActivity{
             }
         });
     }
-
-//    @Override
-//    public void onClick(View v) {
-//        if(v.getId() == R.id.adminBtn){
-//            Log.d("bernard","na click ang admin");
-//            mRef.child("Users").child(user.getUid()).child("role").setValue("Community Administrator");
-//            finish();
-//            startActivity(new Intent(RolePickActivity.this,AdminActivity.class));
-//        } else if(v.getId() == R.id.memberBtn){
-//            mRef.child("Users").child(user.getUid()).child("role").setValue("Community Member");
-//            finish();
-//            //start member activity
-//        }
-//    }
-
 }

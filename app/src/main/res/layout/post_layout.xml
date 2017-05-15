@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:layout_marginBottom="5dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/activityTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Activity Title"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"/>
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#7f8c8d"
+            android:layout_below="@+id/activityTitle"/>
+
+        <TextView
+            android:layout_below="@+id/line1"
+            android:id="@+id/activityDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Activity Desc"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"/>
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#7f8c8d"
+            android:layout_below="@+id/activityDesc"/>
+
+        <TextView
+            android:layout_below="@+id/line2"
+            android:id="@+id/activityDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Activity Date"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"/>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

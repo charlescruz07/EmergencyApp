@@ -38,7 +38,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".RolePickActivity" />
-        <activity android:name=".AdminActivity"></activity>
+        <activity android:name=".AdminActivity" />
+        <activity android:name=".CreatePostActivity"></activity>
     </application>
 
 </manifest>
