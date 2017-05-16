@@ -17,16 +17,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 /**
- * Created by Acer on 14/05/2017.
+ * Created by Acer on 16/05/2017.
  */
 
-public class AdminActivitiesFragment extends Fragment {
-
+public class MemberActivitiesFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
@@ -39,6 +37,7 @@ public class AdminActivitiesFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View rootView = inflater.inflate(R.layout.recycler_view_layout,container,false);
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         layoutManager = new LinearLayoutManager(rootView.getContext());
@@ -49,19 +48,41 @@ public class AdminActivitiesFragment extends Fragment {
         firebaseDatabase = FirebaseDatabase.getInstance();
         mRef = firebaseDatabase.getReference();
 
-        ArrayList<String> test = new ArrayList<>();
-        final ArrayList<Posts> postArray = new ArrayList<>();
-
-        Query query = mRef.child("Posts")
-                .child(mUser.getUid());
-
+        final ArrayList<Posts> postList = new ArrayList<>();
+        final Query query = mRef.child("Posts");
         query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Posts posts = dataSnapshot.getValue(Posts.class);
-                postArray.add(posts);
-                adapter = new AdminActivitiesAdapter(getActivity(),postArray);
-                recyclerView.setAdapter(adapter);
+                Query query2 = mRef.child("Posts").child(dataSnapshot.getKey());
+                query2.addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                        Posts post = dataSnapshot.getValue(Posts.class);
+                        postList.add(post);
+                        adapter = new AdminActivitiesAdapter(getActivity(),postList);
+                        recyclerView.setAdapter(adapter);
+                    }
+
+                    @Override
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
             }
 
             @Override
@@ -84,7 +105,7 @@ public class AdminActivitiesFragment extends Fragment {
 
             }
         });
-
+        //kuwang adapter
         return rootView;
     }
 }

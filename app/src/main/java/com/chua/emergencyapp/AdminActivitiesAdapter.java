@@ -3,6 +3,7 @@ package com.chua.emergencyapp;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +60,8 @@ public class AdminActivitiesAdapter extends RecyclerView.Adapter<AdminActivities
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    context.startActivity(new Intent(context,ClassDetailsActivity.class).putExtra("key",subjectPrimaryKeys.get(getAdapterPosition())));
+                    Log.d("bernard",postArray.get(getAdapterPosition()).getuId());
+                    context.startActivity(new Intent(context,PostDetailsActivity.class).putExtra("key",postArray.get(getAdapterPosition()).getuId()));
                 }
             });
         }

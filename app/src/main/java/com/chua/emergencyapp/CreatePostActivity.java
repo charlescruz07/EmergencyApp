@@ -52,7 +52,11 @@ public class CreatePostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Posts posts = new Posts(postTitle.getText().toString(),postDesc.getText().toString(),formattedDate);
-                mRef.child("Posts").child(mUser.getUid()).push().setValue(posts);
+                DatabaseReference myPostRef = mRef.child("Posts").child(mUser.getUid()).push();
+                posts.setuId(myPostRef.getKey());
+                myPostRef.setValue(posts);
+//                Log.d("bernard",myPostRef.getKey());
+//                Log.d("bernard",mRef.getKey());
                 finish();
                 startActivity(new Intent(CreatePostActivity.this,AdminActivity.class));
             }

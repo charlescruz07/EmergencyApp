@@ -47,6 +47,7 @@ public class RolePickActivity extends AppCompatActivity{
             public void onClick(View v) {
                 mRef.child("Users").child(user.getUid()).child("role").setValue("Community Member");
                 finish();
+                startActivity(new Intent(RolePickActivity.this,MemberActivity.class));
                 //start member activity
             }
         });

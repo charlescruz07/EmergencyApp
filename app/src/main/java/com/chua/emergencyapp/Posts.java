@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 
 public class Posts {
+    private String uId;
     private String title;
     private String description;
     private String date;
@@ -45,4 +46,11 @@ public class Posts {
         this.date = date;
     }
 
+    public String getuId() {
+        return uId;
+    }
+
+    public void setuId(String uId) {
+        this.uId = uId;
+    }
 }

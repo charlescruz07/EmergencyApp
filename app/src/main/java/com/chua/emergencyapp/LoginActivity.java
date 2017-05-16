@@ -79,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                                     startActivity(new Intent(LoginActivity.this,AdminActivity.class));
                                 } else if (dataSnapshot.getKey().toString().equals("Community Member")){
                                     finish();
+                                    startActivity(new Intent(LoginActivity.this,MemberActivity.class));
                                     //start member activity
                                 }
                             }
